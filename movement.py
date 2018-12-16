@@ -1,9 +1,13 @@
 import numpy as np
 
 #create an array to hold the information
-n = 11
-m = 11
-a = [0] * n
-for i in range(n):
-    a[i] = [0] * m
-print(np.matrix(a))
+grid = 11
+map = ['-'] * grid
+for i in range(grid):
+    map[i] = ['-'] * grid
+
+#add the character to the centre of the map
+map[5][5] = 'C'
+
+#display the map with the character in the middle
+print(np.matrix(map))

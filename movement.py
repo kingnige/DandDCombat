@@ -83,4 +83,74 @@ while loopMovement > 0:
             map[arrayXpos][arrayYpos] = 'd'
             loopControl = True
             loopMovement = loopMovement - 2
+arrayXpos = arrayX
+arrayYpos = arrayY
+loopMovement = movement
+loopControl = True
+showMap()
+
+#find possible movement places North West
+while loopMovement > 0:
+    if loopMovement >= 1:
+        if loopControl == True:
+            arrayXpos = arrayXpos + north
+            arrayYpos = arrayYpos + west
+            map[arrayXpos][arrayYpos] = 'd'
+            loopControl = False
+            loopMovement = loopMovement - 1
+    if loopMovement >= 2:
+        if loopControl == False:
+            arrayXpos = arrayXpos + north
+            arrayYpos = arrayYpos + west
+            map[arrayXpos][arrayYpos] = 'd'
+            loopControl = True
+            loopMovement = loopMovement - 2
+arrayXpos = arrayX
+arrayYpos = arrayY
+loopMovement = movement
+loopControl = True
+showMap()
+
+#find possible movement places South East
+while loopMovement > 0:
+    if loopMovement >= 1:
+        if loopControl == True:
+            arrayXpos = arrayXpos +south
+            arrayYpos = arrayYpos + east
+            map[arrayXpos][arrayYpos] = 'd'
+            loopControl = False
+            loopMovement = loopMovement - 1
+    if loopMovement >= 2:
+        if loopControl == False:
+            arrayXpos = arrayXpos + south
+            arrayYpos = arrayYpos + east
+            map[arrayXpos][arrayYpos] = 'd'
+            loopControl = True
+            loopMovement = loopMovement - 2
+arrayXpos = arrayX
+arrayYpos = arrayY
+loopMovement = movement
+loopControl = True
+showMap()
+
+#find possible movement places South West
+while loopMovement > 0:
+    if loopMovement >= 1:
+        if loopControl == True:
+            arrayXpos = arrayXpos + south
+            arrayYpos = arrayYpos + west
+            map[arrayXpos][arrayYpos] = 'd'
+            loopControl = False
+            loopMovement = loopMovement - 1
+    if loopMovement >= 2:
+        if loopControl == False:
+            arrayXpos = arrayXpos + south
+            arrayYpos = arrayYpos + west
+            map[arrayXpos][arrayYpos] = 'd'
+            loopControl = True
+            loopMovement = loopMovement - 2
+arrayXpos = arrayX
+arrayYpos = arrayY
+loopMovement = movement
+loopControl = True
 showMap()

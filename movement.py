@@ -31,6 +31,7 @@ map[arrayX][arrayY] = 'C'
 movement = 6
 loopMovement = movement
 loopControl = True
+diagonalCounter = 0
 
 #find possible movement places North
 for i in range(1,movement+1):
@@ -69,6 +70,7 @@ while loopMovement > 0:
             map[arrayXpos][arrayYpos] = 'd'
             loopControl = False
             loopMovement = loopMovement - 1
+            diagonalCounter = diagonalCounter + 1
     if loopMovement >= 2:
         if loopControl == False:
             arrayXpos = arrayXpos + north
@@ -76,6 +78,7 @@ while loopMovement > 0:
             map[arrayXpos][arrayYpos] = 'd'
             loopControl = True
             loopMovement = loopMovement - 2
+            diagonalCounter = diagonalCounter + 1
 arrayXpos = arrayX
 arrayYpos = arrayY
 loopMovement = movement
@@ -145,20 +148,34 @@ loopMovement = movement
 loopControl = True
 
 #find all possible movement places North West and North
-diagonalCount = 1
-while loopMovement > 0:
-    while diagonalCount > 0:
-        for i in range(0,diagonalCount):
-            arrayXpos = arrayXpos + north
-            arrayYpos = arrayYpos + west
-            map[arrayXpos][arrayYpos] = 'd'
-            diagonalCount = diagonalCount - 1
-            loopMovement = loopMovement - 1
-    if loopMovement > 0:
-        for i in range(0,loopMovement):
-            arrayXpos = arrayXpos + north
-            map[arrayXpos][arrayYpos] = 'd'
-    loopMovement = 0
+for diagonalCount in range(1,diagonalCounter+1):
+    while loopMovement > 0:
+        while diagonalCount > 0:
+            if loopMovement >= 1 and diagonalCount > 0:
+                if (loopControl):
+                    arrayXpos = arrayXpos + north
+                    arrayYpos = arrayYpos + west
+                    map[arrayXpos][arrayYpos] = 'd'
+                    loopControl = False
+                    loopMovement = loopMovement - 1
+                    diagonalCount = diagonalCount - 1
+            if loopMovement >= 2 and diagonalCount > 0:
+                if loopControl == False:
+                    arrayXpos = arrayXpos + north
+                    arrayYpos = arrayYpos + west
+                    map[arrayXpos][arrayYpos] = 'd'
+                    loopControl = True
+                    loopMovement = loopMovement - 2
+                    diagonalCount = diagonalCount - 1
+        if loopMovement >= 1:
+            for i in range(0,loopMovement):
+                arrayXpos = arrayXpos + north
+                map[arrayXpos][arrayYpos] = 'd'
+        loopMovement = 0
+    arrayXpos = arrayX
+    arrayYpos = arrayY
+    loopMovement = movement
+    loopControl = True
 
 #show the current map
 showMap()

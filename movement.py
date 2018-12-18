@@ -27,9 +27,6 @@ arrayYpos = arrayY
 #add the character to the centre of the map
 map[arrayX][arrayY] = 'C'
 
-#display the map with the character in the middle
-showMap()
-
 #define movement speed
 movement = 6
 loopMovement = movement
@@ -41,7 +38,6 @@ for i in range(1,movement+1):
     map[arrayXpos][arrayYpos] = 'p'
 arrayXpos = arrayX
 arrayYpos = arrayY
-showMap()
 
 #find possible movement places East
 for i in range(1,movement+1):
@@ -49,7 +45,6 @@ for i in range(1,movement+1):
     map[arrayXpos][arrayYpos] = 'p'
 arrayXpos = arrayX
 arrayYpos = arrayY
-showMap()
 
 #find possible movement places South
 for i in range(1,movement+1):
@@ -57,7 +52,6 @@ for i in range(1,movement+1):
     map[arrayXpos][arrayYpos] = 'p'
 arrayXpos = arrayX
 arrayYpos = arrayY
-showMap()
 
 #find possible movement places West
 for i in range(1,movement+1):
@@ -65,7 +59,6 @@ for i in range(1,movement+1):
     map[arrayXpos][arrayYpos] = 'p'
 arrayXpos = arrayX
 arrayYpos = arrayY
-showMap()
 
 #find possible movement places North East
 while loopMovement > 0:
@@ -87,7 +80,6 @@ arrayXpos = arrayX
 arrayYpos = arrayY
 loopMovement = movement
 loopControl = True
-showMap()
 
 #find possible movement places North West
 while loopMovement > 0:
@@ -109,7 +101,6 @@ arrayXpos = arrayX
 arrayYpos = arrayY
 loopMovement = movement
 loopControl = True
-showMap()
 
 #find possible movement places South East
 while loopMovement > 0:
@@ -131,7 +122,6 @@ arrayXpos = arrayX
 arrayYpos = arrayY
 loopMovement = movement
 loopControl = True
-showMap()
 
 #find possible movement places South West
 while loopMovement > 0:
@@ -153,4 +143,22 @@ arrayXpos = arrayX
 arrayYpos = arrayY
 loopMovement = movement
 loopControl = True
+
+#find all possible movement places North West and North
+diagonalCount = 1
+while loopMovement > 0:
+    while diagonalCount > 0:
+        for i in range(0,diagonalCount):
+            arrayXpos = arrayXpos + north
+            arrayYpos = arrayYpos + west
+            map[arrayXpos][arrayYpos] = 'd'
+            diagonalCount = diagonalCount - 1
+            loopMovement = loopMovement - 1
+    if loopMovement > 0:
+        for i in range(0,loopMovement):
+            arrayXpos = arrayXpos + north
+            map[arrayXpos][arrayYpos] = 'd'
+    loopMovement = 0
+
+#show the current map
 showMap()
